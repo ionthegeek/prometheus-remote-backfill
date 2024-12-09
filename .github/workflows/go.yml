@@ -18,10 +18,11 @@ jobs:
     - name: Check out Yugabyte metrics collection level definitions
       uses: actions/checkout@v4
       with:
+        path: 'yugabyte-db'
         repository: 'yugabyte/yugabyte-db'
-        sparse-checkout-cone-mode: false
         sparse-checkout: |
           managed/src/main/resources/metric/*_level_params.json
+        sparse-checkout-cone-mode: false
 
     - name: Set up Go
       uses: actions/setup-go@v5
