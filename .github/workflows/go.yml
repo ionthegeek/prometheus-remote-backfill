@@ -24,6 +24,9 @@ jobs:
           managed/src/main/resources/metric/*_level_params.json
         sparse-checkout-cone-mode: false
 
+    - name: Verify checkout
+      run: 'ls yugabyte-db/managed/src/main/resources/metric/*_level_params.json'
+
     - name: Set up Go
       uses: actions/setup-go@v5
       with:
