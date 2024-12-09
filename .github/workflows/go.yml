@@ -5,14 +5,23 @@ name: Go
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "actions-sandbox" ]
 
 jobs:
 
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - name: Check out prometheus-remote-backfill code
+      uses: actions/checkout@v4
+
+    - name: Check out Yugabyte metrics collection level definitions
+      uses: actions/checkout@v4
+      with:
+        repository: 'yugabyte/yugabyte-db'
+        sparse-checkout-cone-mode: false
+        sparse-checkout: |
+          managed/src/main/resources/metric/*_level_params.json
 
     - name: Set up Go
       uses: actions/setup-go@v5
